@@ -4,7 +4,7 @@ using System.Text;
 
 public class Program
 {
-    // Dictionary for mapping digits to letters
+    // dictionary for mapping digits to letters
     static Dictionary<char, string> NumToLetter = new Dictionary<char, string>
         {
             { '2', "ABC" },
@@ -25,29 +25,27 @@ public class Program
 
         foreach (char c in input)
         {
-            if (c == '#')
+            switch (c)
             {
-                AppendCharacter(output, sequence);
-                break;
+                case ' ':
+                    AppendCharacter(output, sequence);
+                    continue;
+
+                case '*':
+                    AppendCharacter(output, sequence);
+                    RemoveCharacter(output);
+                    continue;
+
+                case '#':
+                    AppendCharacter(output, sequence);
+                    return output.ToString();
+
+                default:
+                    if (sequence.Length > 0 && c != sequence[0])
+                        AppendCharacter(output, sequence);
+                    sequence.Append(c);
+                    break;
             }
-
-            if (c == ' ')
-            {
-                AppendCharacter(output, sequence);
-                continue;
-            }
-
-            if (c == '*')
-            {
-                AppendCharacter(output, sequence);
-                RemoveCharacter(output);
-                continue;
-            }
-
-            if (sequence.Length > 0 && sequence[0] != c)
-                AppendCharacter(output, sequence);
-
-            sequence.Append(c);
         }
 
         return output.ToString();
@@ -73,7 +71,6 @@ public class Program
             output.Length--;
     }
 
-
     public static void Main(string[] args)
     {
         string input = "4433555 555666#";
@@ -84,18 +81,17 @@ public class Program
     public static void Test()
     {
         // Test cases
-        Console.WriteLine(OldPhonePad("2#"));                    // A
-        Console.WriteLine(OldPhonePad("222#"));                  // C
-        Console.WriteLine(OldPhonePad("2222#"));                 // A
-        Console.WriteLine(OldPhonePad("2 2 2#"));                // AAA
-        Console.WriteLine(OldPhonePad("6665553#"));              // OLD
-        Console.WriteLine(OldPhonePad("4433555*#"));             // HE
-        Console.WriteLine(OldPhonePad("*2#"));                   // A
-        Console.WriteLine(OldPhonePad("999666880277733#"));      // YOU ARE
-        Console.WriteLine(OldPhonePad("77773333**#"));           // ""
-        Console.WriteLine(OldPhonePad("8 88777444666*664#"));    // TURING
-        Console.WriteLine(OldPhonePad("44 33 555 555 6660#"));   // HELLO
-        Console.WriteLine(OldPhonePad("4433555 555666096667775553#")); // HELLO WORLD
-
+        Console.WriteLine(OldPhonePad("2#"));                           // A
+        Console.WriteLine(OldPhonePad("222#"));                         // C
+        Console.WriteLine(OldPhonePad("222 2 22#"));                        // A
+        Console.WriteLine(OldPhonePad("2 2 2#"));                       // AAA
+        Console.WriteLine(OldPhonePad("6665553#"));                     // OLD
+        Console.WriteLine(OldPhonePad("4433555*#"));                    // HE
+        Console.WriteLine(OldPhonePad("*2#"));                          // A
+        Console.WriteLine(OldPhonePad("999666880277733#"));             // YOU ARE
+        Console.WriteLine(OldPhonePad("7777333 **#"));                  // ""
+        Console.WriteLine(OldPhonePad("8 88777444666*664#"));           // TURING
+        Console.WriteLine(OldPhonePad("44 33 555 555 6660#"));          // HELLO
+        Console.WriteLine(OldPhonePad("4433555 5555666096667775553#"));  // HELLO WORLD
     }
 }
