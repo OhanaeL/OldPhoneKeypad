@@ -5,7 +5,6 @@ public class Program
     // Dictionary for mapping digits to letters
     static Dictionary<char, string> NumToLetter = new Dictionary<char, string>
         {
-            { '1', "&'(" },
             { '2', "ABC" },
             { '3', "DEF" },
             { '4', "GHI" },
