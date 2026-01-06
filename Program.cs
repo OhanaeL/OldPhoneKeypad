@@ -59,7 +59,7 @@ public class Program
             }
         }
 
-        return output.ToString();
+        return output.ToString(); // backup, in case there's no '#' at the end
     }
 
     /// <summary>
