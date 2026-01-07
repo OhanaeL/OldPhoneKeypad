@@ -7,7 +7,7 @@ namespace IronSoftTaskProject
     public class Program
     {
         // dictionary for mapping digits to letters
-        static Dictionary<char, string> NumberKeypad = new Dictionary<char, string>
+        private static readonly Dictionary<char, string> NumberKeypad = new Dictionary<char, string>
         {
             { '1', "&'(" },
             { '2', "ABC" },
@@ -61,8 +61,9 @@ namespace IronSoftTaskProject
                 }
             }
 
+            // backup, in case there's no '#' at the end
             AppendCharacter(output, sequence);
-            return output.ToString(); // backup, in case there's no '#' at the end
+            return output.ToString();
         }
 
         /// <summary>
