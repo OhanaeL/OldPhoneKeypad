@@ -10,14 +10,14 @@ Simulate the text input behavior of old phone keypads where you had to press num
 
 ```text
 OldPhoneKeypad/
-├── OldPhoneKeypad.sln                      # solution file
+├── OldPhoneKeypad.sln                    # solution file
 ├── README.md                             # this file
-├── OldPhoneKeypadProject/                  # main application
+├── OldPhoneKeypadProject/                # main application
 │   ├── Program.cs                        # contains PhoneKeypadDecoder Class
 │   ├── OldPhoneKeypadProject.csproj
 │   ├── bin/
 │   └── obj/
-└── OldPhoneKeypadTests/                    # unit tests (xUnit)
+└── OldPhoneKeypadTests/                  # unit tests (xUnit)
     ├── UnitTest.cs                       # comprehensive test suite
     ├── OldPhoneKeypadTests.csproj
     ├── bin/
