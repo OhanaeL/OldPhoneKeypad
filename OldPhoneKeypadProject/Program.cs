@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace IronSoftTaskProject
+namespace OldPhoneKeypad
 {
     public class PhoneKeypadDecoder
     {

@@ -9,17 +9,17 @@ Simulate the text input behavior of old phone keypads where you had to press num
 ## Project Structure
 
 ```text
-IronSoftTask/
-├── IronSoftTask.sln                      # solution file
+OldPhoneKeypad/
+├── OldPhoneKeypad.sln                      # solution file
 ├── README.md                             # this file
-├── IronSoftTaskProject/                  # main application
+├── OldPhoneKeypadProject/                  # main application
 │   ├── Program.cs                        # contains PhoneKeypadDecoder Class
-│   ├── IronSoftTaskProject.csproj
+│   ├── OldPhoneKeypadProject.csproj
 │   ├── bin/
 │   └── obj/
-└── IronSoftTaskTests/                    # unit tests (xUnit)
+└── OldPhoneKeypadTests/                    # unit tests (xUnit)
     ├── UnitTest.cs                       # comprehensive test suite
-    ├── IronSoftTaskTests.csproj
+    ├── OldPhoneKeypadTests.csproj
     ├── bin/
     └── obj/
 ```

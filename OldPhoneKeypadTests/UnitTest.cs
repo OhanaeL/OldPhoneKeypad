@@ -1,7 +1,7 @@
 ﻿using Xunit;
-using IronSoftTaskProject;
+using OldPhoneKeypad;
 
-public class IronSoftTaskUnitTests
+public class OldPhoneKeypadTests
 {
     // ==================== Normal Cases ====================
 

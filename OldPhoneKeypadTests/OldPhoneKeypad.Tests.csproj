@@ -19,7 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\IronSoftTaskProject\IronSoftTaskProject.csproj" />
+    <ProjectReference Include="..\OldPhoneKeypadProject\OldPhoneKeypad.csproj" />
   </ItemGroup>
 
 </Project>

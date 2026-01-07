@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IronSoftTaskProject", "IronSoftTaskProject\IronSoftTaskProject.csproj", "{4062E6F3-BFF3-4D7C-B345-D1BAB3591340}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OldPhoneKeypad", "OldPhoneKeypadProject\OldPhoneKeypad.csproj", "{4062E6F3-BFF3-4D7C-B345-D1BAB3591340}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IronSoftTaskTests", "IronSoftTaskTests\IronSoftTaskTests.csproj", "{1747210E-429E-41EB-B84C-DC810D298EC2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OldPhoneKeypad.Tests", "OldPhoneKeypadTests\OldPhoneKeypad.Tests.csproj", "{1747210E-429E-41EB-B84C-DC810D298EC2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
