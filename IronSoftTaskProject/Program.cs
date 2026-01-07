@@ -20,6 +20,9 @@ namespace IronSoftTaskProject
             { '9', "WXYZ" },
             { '0', " " }
         };
+        private const char PAUSE = ' ';
+        private const char BACKSPACE = '*';
+        private const char SEND = '#';
 
         /// <summary>
         /// Decodes a string of old phone keypad input into a text message.
@@ -50,18 +53,18 @@ namespace IronSoftTaskProject
             {
                 switch (c)
                 {
-                    case ' ':
+                    case PAUSE:
                         // ' ' indicates a pause, finalize any ongoing sequence and move on
                         AppendCharacter(output, sequence);
                         continue;
 
-                    case '*':
+                    case BACKSPACE:
                         // '*' indicates a backspace, finalize any ongoing sequence and remove the last character from output
                         AppendCharacter(output, sequence);
                         RemoveCharacter(output);
                         continue;
 
-                    case '#':
+                    case SEND:
                         // '#' indicates the end of input, finalize any ongoing sequence and return the output
                         AppendCharacter(output, sequence);
                         return output.ToString();
