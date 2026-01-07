@@ -74,7 +74,7 @@ namespace IronSoftTaskProject
         /// </summary>
         /// <param name="output">The output StringBuilder.</param>
         /// <param name="sequence">The current sequence of identical digits.</param>
-        public static void AppendCharacter(StringBuilder output, StringBuilder sequence)
+        private static void AppendCharacter(StringBuilder output, StringBuilder sequence)
         {
             if (sequence.Length > 0)
             {
@@ -93,7 +93,7 @@ namespace IronSoftTaskProject
         /// Removes the last character from the output, if any.
         /// </summary>
         /// <param name="output">The output StringBuilder.</param>
-        public static void RemoveCharacter(StringBuilder output)
+        private static void RemoveCharacter(StringBuilder output)
         {
             if (output.Length > 0)
                 output.Length--;
