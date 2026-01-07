@@ -4,7 +4,7 @@ using System.Text;
 
 namespace IronSoftTaskProject
 {
-    public class Program
+    public class PhoneKeypadDecoder
     {
         // dictionary for mapping digits to letters
         private static readonly Dictionary<char, string> NumberKeypad = new Dictionary<char, string>
@@ -29,6 +29,9 @@ namespace IronSoftTaskProject
         /// <returns>The decoded text message.</returns>
         public static string OldPhonePad(string input)
         {
+            // handle null input
+            if (input == null) throw new ArgumentNullException(nameof(input));
+
             StringBuilder output = new StringBuilder();
             StringBuilder sequence = new StringBuilder();
 
@@ -95,12 +98,15 @@ namespace IronSoftTaskProject
             if (output.Length > 0)
                 output.Length--;
         }
+    }
 
+    public class Program
+    {
         public static void Main(string[] _)
         {
             Console.Write("Enter keypad input:");
             string input = Console.ReadLine() ?? string.Empty;
-            string result = OldPhonePad(input);
+            string result = PhoneKeypadDecoder.OldPhonePad(input);
             Console.WriteLine(result);
         }
     }
