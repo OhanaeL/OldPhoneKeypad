@@ -23,8 +23,19 @@ namespace IronSoftTaskProject
 
         /// <summary>
         /// Decodes a string of old phone keypad input into a text message.
-        /// Rules: Digits 2-9 map to letters, 0 = space, * = backspace, # = end, space = pause.
         /// </summary>
+        /// <remarks>
+        /// <para>- Digits 2-9 map to letters (2 → ABC, 3 → DEF, etc.).</para>
+        /// <para>- Digit 0 maps to a space character.</para>
+        /// <para>- Repeated presses cycle through the letters (e.g., "222" → "C").</para>
+        /// <para>- ' ' (space) indicates a pause to separate repeated keys.</para>
+        /// <para>- '*' deletes the last character.</para>
+        /// <para>- '#' ends the input sequence.</para>
+        /// <para></para>
+        /// Examples:
+        /// <para>- OldPhonePad("4433555 555666#") => "HELLO"</para>
+        /// <para>- OldPhonePad("8 88777444666*664#") => "TURING"</para>
+        /// </remarks>
         /// <param name="input">The string containing keypad input characters.</param>
         /// <returns>The decoded text message.</returns>
         public static string OldPhonePad(string input)

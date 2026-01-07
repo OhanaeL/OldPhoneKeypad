@@ -24,6 +24,59 @@ IronSoftTask/
     └── obj/
 ```
 
+## Getting Started
+
+### Prerequisites
+
+- .NET 8.0 SDK or later
+
+### Build the Solution
+
+```bash
+dotnet build IronSoftTask.sln
+```
+
+### Run the Application
+
+```bash
+dotnet run --project IronSoftTaskProject/IronSoftTaskProject.csproj
+```
+
+Or navigate to the project directory:
+
+```bash
+cd IronSoftTaskProject
+dotnet run
+```
+
+**Example Usage:**
+
+```text
+Enter keypad input: 4433555 555666#
+Output: HELLO
+```
+
+### Run Tests
+
+Run all tests:
+
+```bash
+dotnet test
+```
+
+Run tests with detailed output:
+
+```bash
+dotnet test --verbosity normal
+```
+
+Run tests from the test project directory:
+
+```bash
+cd IronSoftTaskTests
+dotnet test
+```
+
 ## Program Design
 
 ### Architecture
@@ -61,3 +114,14 @@ Processing Flow:
 
 - Time: O(n) - Single pass
 - Space: O(n) - Output scales with input
+
+## AI Assistance
+
+What AI helped with:
+
+1. Code improvements - XML documentation, input validation, access modifiers
+2. Test expansion - Edge case identification and comprehensive test coverage
+3. Documentation - README structure, architectural explanations, complexity analysis
+4. Best practices - Error handling patterns, .NET conventions, maintainability
+
+**Chat Transcript:** [View full conversation](https://chatgpt.com/share/695dea35-6e90-8011-a318-ec71e568b782)
