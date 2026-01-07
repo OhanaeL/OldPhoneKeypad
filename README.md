@@ -14,12 +14,12 @@ OldPhoneKeypad/
 ├── README.md                             # this file
 ├── OldPhoneKeypadProject/                # main application
 │   ├── Program.cs                        # contains PhoneKeypadDecoder Class
-│   ├── OldPhoneKeypadProject.csproj
+│   ├── OldPhoneKeypad.csproj
 │   ├── bin/
 │   └── obj/
 └── OldPhoneKeypadTests/                  # unit tests (xUnit)
     ├── UnitTest.cs                       # comprehensive test suite
-    ├── OldPhoneKeypadTests.csproj
+    ├── OldPhoneKeypad.Tests.csproj
     ├── bin/
     └── obj/
 ```
@@ -33,19 +33,19 @@ OldPhoneKeypad/
 ### Build the Solution
 
 ```bash
-dotnet build IronSoftTask.sln
+dotnet build OldPhoneKeypad.sln
 ```
 
 ### Run the Application
 
 ```bash
-dotnet run --project IronSoftTaskProject/IronSoftTaskProject.csproj
+dotnet run --project OldPhoneKeypadProject/OldPhoneKeypad.csproj
 ```
 
 Or navigate to the project directory:
 
 ```bash
-cd IronSoftTaskProject
+cd OldPhoneKeypadProject
 dotnet run
 ```
 
@@ -67,7 +67,7 @@ dotnet test
 Run tests from the test project directory:
 
 ```bash
-cd IronSoftTaskTests
+cd OldPhoneKeypadTests
 dotnet test
 ```
 
