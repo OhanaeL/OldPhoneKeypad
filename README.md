@@ -64,12 +64,6 @@ Run all tests:
 dotnet test
 ```
 
-Run tests with detailed output:
-
-```bash
-dotnet test --verbosity normal
-```
-
 Run tests from the test project directory:
 
 ```bash
