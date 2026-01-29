@@ -4,10 +4,20 @@ using System.Text;
 
 namespace OldPhoneKeypad
 {
+    /// <summary>
+    /// PhoneKeypadDecoder provides functionality to decode old phone keypad input into text.
+    ///
+    /// Allowed input characters:
+    ///   - Digits 0-9 (for letters and space)
+    ///   - Space (' ') for pause between same-key presses
+    ///   - '*' for backspace
+    ///   - '#' to send/finish input
+    /// Any other character is ignored and treated as a sequence break (like a pause).
+    /// </summary>
     public class PhoneKeypadDecoder
     {
         // dictionary for mapping digits to letters
-        private static readonly Dictionary<char, string> NumberKeypad = new Dictionary<char, string>
+        private static readonly Dictionary<char, string> NumberKeypad = new()
         {
             { '1', "&'(" },
             { '2', "ABC" },
@@ -17,12 +27,13 @@ namespace OldPhoneKeypad
             { '6', "MNO" },
             { '7', "PQRS" },
             { '8', "TUV" },
-            { '9', "WXYZ" },
-            { '0', " " }
+            { '9', "WXYZ" }
         };
+        private static readonly HashSet<char> ValidChars = [.. NumberKeypad.Keys.Concat(['0', ' ', '*', '#'])];
         private const char PAUSE = ' ';
         private const char BACKSPACE = '*';
         private const char SEND = '#';
+        private const char SPACE = '0';
 
         /// <summary>
         /// Decodes a string of old phone keypad input into a text message.
@@ -43,11 +54,14 @@ namespace OldPhoneKeypad
         /// <returns>The decoded text message.</returns>
         public static string OldPhonePad(string input)
         {
-            // handle null input
-            if (input == null) throw new ArgumentNullException(nameof(input));
 
-            StringBuilder output = new StringBuilder();
-            StringBuilder sequence = new StringBuilder();
+            if (input == null)
+                throw new ArgumentNullException(nameof(input));
+            if (!IsValidInput(input))
+                throw new ArgumentException($"{nameof(input)} contains invalid characters.", input);
+
+            StringBuilder output = new();
+            StringBuilder sequence = new();
 
             foreach (char c in input)
             {
@@ -62,6 +76,12 @@ namespace OldPhoneKeypad
                         // '*' indicates a backspace, finalize any ongoing sequence and remove the last character from output
                         AppendCharacter(output, sequence);
                         RemoveCharacter(output);
+                        continue;
+
+                    case SPACE:
+                        // '0' indicates a space character, finalize any ongoing sequence and append space
+                        AppendCharacter(output, sequence);
+                        output.Append(' ');
                         continue;
 
                     case SEND:
@@ -81,6 +101,17 @@ namespace OldPhoneKeypad
             // backup, in case there's no '#' at the end
             AppendCharacter(output, sequence);
             return output.ToString();
+        }
+
+        /// <summary>
+        /// Checks if the input contains only valid keypad characters.
+        /// </summary>
+        /// <param name="input">The input string to validate.</param>
+        /// <returns>True if input is valid; otherwise, false.</returns>
+        private static bool IsValidInput(string input)
+        {
+            // Only checks for invalid characters; null is handled separately
+            return input.All(c => ValidChars.Contains(c));
         }
 
         /// <summary>
@@ -118,7 +149,7 @@ namespace OldPhoneKeypad
     {
         public static void Main(string[] _)
         {
-            Console.Write("Enter keypad input:");
+            Console.WriteLine("Enter keypad input (digits 0-9, space, *, #):");
             string input = Console.ReadLine() ?? string.Empty;
             string result = PhoneKeypadDecoder.OldPhonePad(input);
             Console.WriteLine(result);

@@ -215,12 +215,67 @@ public class OldPhoneKeypadTests
         Assert.Equal(expected, result);
     }
 
+    // ==================== Additional Edge Cases ====================
+
     [Fact]
-    public void Test_InvalidCharactersIgnored()
+    public void Test_CyclingProducesSameOutput()
     {
-        string input = "2a3!#"; // letters and punctuation ignored
-        string expected = "AD";
+        string input1 = "222333#";         // 2->A, 22->B, 222->C, 3->D, 33->E, 333->F => CF
+        string input2 = "222222333333#";   // 2 six times (cycles: C), 3 six times (cycles: F)
+        string expected = "CF";
+        string result1 = PhoneKeypadDecoder.OldPhonePad(input1);
+        string result2 = PhoneKeypadDecoder.OldPhonePad(input2);
+        Assert.Equal(expected, result1);
+        Assert.Equal(expected, result2);
+    }
+
+    [Fact]
+    public void Test_VeryLongInput_Performance()
+    {
+        string input = new string('2', 1000) + "#";
+        string expected = "A"; // pressed 1000 times cycles through A, B, C, so ends with A
         string result = PhoneKeypadDecoder.OldPhonePad(input);
         Assert.Equal(expected, result);
+    }
+
+    [Fact]
+    public void Test_OnlySpecialCharacters()
+    {
+        string input = "***   ##";
+        string expected = "";
+        string result = PhoneKeypadDecoder.OldPhonePad(input);
+        Assert.Equal(expected, result);
+    }
+
+    [Fact]
+    public void Test_MixedValidAndInvalid()
+    {
+        string input = "2a2b222#";
+        Assert.Throws<ArgumentException>(() => PhoneKeypadDecoder.OldPhonePad(input));
+    }
+
+    [Fact]
+    public void Test_ExcessiveBackspaces()
+    {
+        string input = "22***#";
+        string expected = "";
+        string result = PhoneKeypadDecoder.OldPhonePad(input);
+        Assert.Equal(expected, result);
+    }
+
+    [Fact]
+    public void Test_OnlyZeros()
+    {
+        string input = "0000#";
+        string expected = "    "; // old phones interpreted multiple 0 in sequence as multiple spaces
+        string result = PhoneKeypadDecoder.OldPhonePad(input);
+        Assert.Equal(expected, result);
+    }
+
+    [Fact]
+    public void Test_OnlyInvalidCharacters()
+    {
+        string input = "abc!@#";
+        Assert.Throws<ArgumentException>(() => PhoneKeypadDecoder.OldPhonePad(input));
     }
 }
